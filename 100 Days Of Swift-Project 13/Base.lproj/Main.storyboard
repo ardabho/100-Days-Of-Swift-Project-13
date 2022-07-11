@@ -58,14 +58,14 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnh-wS-XTP">
-                                <rect key="frame" x="334" y="811" width="60" height="31"/>
+                                <rect key="frame" x="324" y="811" width="70" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="KUo-0i-QMG"/>
+                                    <constraint firstAttribute="width" constant="70" id="KUo-0i-QMG"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                 <connections>
-                                    <action selector="Save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uz6-0S-D0l"/>
+                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sEi-J7-4hV"/>
                                 </connections>
                             </button>
                         </subviews>
