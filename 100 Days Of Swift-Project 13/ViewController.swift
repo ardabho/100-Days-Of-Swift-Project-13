@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var changeFilterButton: UIButton!
     var currentImage: UIImage!
     var context: CIContext!
     var currentFilter: CIFilter!
@@ -35,7 +36,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIButton) {
-        guard let image = imageView.image else { return }
+        guard let image = imageView.image else { showNoImageError(); return }
         
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
@@ -55,6 +56,12 @@ class ViewController: UIViewController {
             present(ac, animated: true)
         }
     }
+    
+    func showNoImageError() {
+        let ac = UIAlertController(title: "Yikes", message: "No image selected", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
     //MARK: - Core Image
     
     @IBAction func changeFilter(_ sender: UIButton) {
@@ -73,9 +80,11 @@ class ViewController: UIViewController {
     }
     
     func setFilter(action: UIAlertAction) {
-        guard currentImage != nil else { return }
+        guard currentImage != nil else { showNoImageError(); return }
         
         guard let actionTitle = action.title else { return }
+        
+        changeFilterButton.titleLabel?.text = actionTitle
         
         currentFilter = CIFilter(name: actionTitle)
         
