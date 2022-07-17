@@ -120,6 +120,13 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         
-        applyProcessing()
+        imageView.alpha = 0
+        imageView.image = image
+        
+        UIView.animate(withDuration: 1, delay: 0, options: []) {
+            self.imageView.alpha = 1
+        } completion: { finished in
+            self.applyProcessing()
+        }
     }
 }
